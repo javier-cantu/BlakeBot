@@ -22,16 +22,25 @@ client.on('ready', async () => {
     console.log('Client is ready!\n');
 });
 
+
+
 // Evento que detecta mensajes entrantes de todos.
 client.on('message', async message => {
+    
     console.log(message);    
+
 });
+
+
 
 // Evento para detectar mensajes que manda el host. 
 client.on('message_create', async (message) => {
+
     console.log(message);
+
 });
+
+
 
 // START CLIENT
 client.initialize();
-
