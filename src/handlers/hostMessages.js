@@ -12,7 +12,7 @@ async function handleHostMessage(client, message) {
             '✅ El bot está activo y funcionando correctamente.'
         );
 
-        // Mensaje al grupo o chat donde se envió el comando, como demo
+        // Mensaje al grupo o chat donde se envió el comando, para mostrar como demo
         await client.sendMessage(
             message.to,
             '✅ El bot está activo y funcionando correctamente.'

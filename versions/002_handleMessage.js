@@ -4,10 +4,8 @@
 const { Client, LocalAuth, MessageMedia } = require('whatsapp-web.js'); // Import Client, LocalAuth, MessageMEdia
 const qrcode = require('qrcode-terminal'); // Import QR
 
-// Importar funciones de otros archivos
-const { handleMessage } = require('../src/handlers/messages'); // Manejador de mensajes
-const { handleHostMessage } = require('../src/handlers/hostMessages'); // MAnejador de mensajes del host
-
+const { handleMessage } = require('../src/handlers/messages'); // Importa la función para manejar mensajes entrantes
+const { handleHostMessage } = require('../src/handlers/hostMessages'); // Importa la función para manejar mensajes del host
 
 // Nuevo Cliente de Whastapp
 const client = new Client({authStrategy: new LocalAuth()});
@@ -26,10 +24,10 @@ client.on('ready', () => {
 
 // Detecta mensajes entrantes y los delega a handleMessage()
 client.on('message', async message => {
-    await handleMessage(client, message);  
+    await handleMessage(client, message); 
 });
 
-// Detecta mensaje creado por el host y lo delega a handleHostMessage()
+// Detecta mensaje creado por el host y que sea fromMe y lo delega a handleHostMessage()
 client.on('message_create', async (message) => {
     if (message.fromMe) {
         await handleHostMessage(client, message);

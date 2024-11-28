@@ -3,7 +3,7 @@
 // los mensajes que mandan los demas.
 
 async function handleMessage(client, message) {
-    console.log(`📥 Mensaje entrante: ${message.body || 'Sin contenido'}`); // Log para depuración
+    console.log(`Mensaje entrante: ${message.body || 'Sin contenido'}`); // Log para depuración
 
     if (message.body.toLowerCase() === 'ping!') {
         // Responde con "pong!" al remitente
@@ -12,18 +12,16 @@ async function handleMessage(client, message) {
             'pong!' // Mensaje de respuesta
         );
     } else {
-        console.log('⚠️ Mensaje ignorado.'); // No realiza ninguna acción
+        console.log('Mensaje ignorado.'); // No realiza ninguna acción
     }
     // Marcar el chat como no leído
     try {
         const chat = await message.getChat();
         await chat.markUnread(); // Marca el chat como no leído
-        console.log(`📌 Chat marcado como no leído: ${chat.name || chat.id.user}`);
+        console.log(`Chat marcado como no leído: ${chat.name || chat.id.user}`);
     } catch (error) {
-        console.error('⚠️ Error al marcar el chat como no leído:', error);
+        console.error('Error al marcar el chat como no leído:', error);
     }
 }
 
 module.exports = { handleMessage };
-
-5
