@@ -1,0 +1,17 @@
+{
+    "categorias": {
+        "fiestas": {
+            "tipoElementos": "eventos",
+            "elementos": []
+        },
+        "ventas": {
+            "tipoElementos": "articulos",
+            "elementos": []
+        }
+    },
+    "estadoBot": {
+        "procesoActual": null,
+        "categoriaActual": null,
+        "elementoActual": null
+    }
+}

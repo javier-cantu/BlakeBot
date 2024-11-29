@@ -1,13 +1,11 @@
-// 002 quiero que los mensajes se manden a otro script handleMessage
-// Este bot se conecta
-// Los mensajes entrantes los delega a handleMessage()
-// Los mensajes del hostlo delega a handleHostMessage()
+// 004 Este debe poder de cambiar de estado. 
+// 004_testEstados.js
 
 const { Client, LocalAuth, MessageMedia } = require('whatsapp-web.js'); // Import Client, LocalAuth, MessageMEdia
 const qrcode = require('qrcode-terminal'); // Import QR
 
 const { handleMessage } = require('../src/handlers/messages'); // Importa la función para manejar mensajes entrantes
-const { handleHostMessage } = require('../src/handlers/hostMessages'); // Importa la función para manejar mensajes del host
+const { handleHostMessage } = require('../src/handlers/hostMessages004'); // Importa la función para manejar mensajes del host
 
 // Nuevo Cliente de Whastapp
 const client = new Client({authStrategy: new LocalAuth()});
