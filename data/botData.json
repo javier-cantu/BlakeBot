@@ -1,17 +1,21 @@
 {
     "categorias": {
-        "fiestas": {
-            "tipoElementos": "eventos",
+        "Fiestas": {
+            "tipoElementos": "Eventos",
             "elementos": []
         },
-        "ventas": {
-            "tipoElementos": "articulos",
+        "Restaurantes": {
+            "tipoElementos": "Restaurantes",
+            "elementos": []
+        },
+        "Ventas": {
+            "tipoElementos": "Articulos",
             "elementos": []
         }
     },
     "estadoBot": {
         "procesoActual": null,
-        "categoriaActual": null,
+        "categoriaActual": "Ventas",
         "elementoActual": null
     }
 }
