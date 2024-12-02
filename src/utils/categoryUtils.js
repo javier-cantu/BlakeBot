@@ -39,7 +39,7 @@ async function crearCategoria(client, message, nombreCategoria) {
         await fs.writeFile('./data/botData.json', JSON.stringify(botData, null, 4));
 
         // Enviar mensaje para solicitar el nombre del tipo de elemento
-        const response = `<bot> ✅ La categoría "${nombreCategoria}" ha sido creada exitosamente.\nAhora, por favor proporciona el nombre del tipo de elemento o unidad que pertenece a esta categoría.\n\nEjemplos:\n- Para la categoría "Fiestas", el tipo podría ser "eventos".\n- Para la categoría "Ventas", el tipo podría ser "artículos".`;
+        const response = `<bot> ✅ La categoría "${nombreCategoria}" ha sido creada exitosamente.\nAhora, por favor proporciona el nombre del tipo de elemento o unidad que pertenece a esta categoría.\n\nEjemplos:\n- Para la categoría "Fiestas", el tipo podría ser "evento".\n- Para la categoría "Ventas", el tipo podría ser "artículo".`;
         await client.sendMessage(message.from, response);
         await client.sendMessage(message.to, response);
 
@@ -108,4 +108,34 @@ async function actualizarTipoElemento(client, message, nombreElemento) {
     }
 }
 
-module.exports = { crearCategoria, actualizarTipoElemento };
+
+/**
+ * Genera un menú dinámico con las categorías existentes.
+ * @returns {string} Menú enumerado de categorías.
+ */
+async function generarMenuCategorias() {
+    try {
+        const filePath = path.join(__dirname, '../../data/botData.json');
+        const data = await fs.readFile(filePath, 'utf8');
+        const botData = JSON.parse(data);
+
+        const categorias = Object.keys(botData.categorias);
+        if (categorias.length === 0) {
+            return '<bot> ⚠️ No hay categorías disponibles.';
+        }
+
+        let menu = '<bot> Selecciona una categoría:\n';
+        categorias.forEach((categoria, index) => {
+            menu += `${index + 1}️⃣ ${categoria}\n`;
+        });
+
+        return menu;
+    } catch (error) {
+        console.error('❌ Error al generar el menú de categorías:', error);
+        return '<bot> ❌ Hubo un problema al generar el menú de categorías.';
+    }
+}
+
+
+
+module.exports = { crearCategoria, actualizarTipoElemento, generarMenuCategorias };
